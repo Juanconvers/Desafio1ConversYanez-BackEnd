@@ -1,47 +1,52 @@
 
 import crypto from 'crypto'
 
+const producto = {
+    title: "", 
+    description: "", 
+    price: 0, 
+    thumbnail: "", 
+    code: "", 
+    stock: 0,
+}
+
 class ProductManager {
-    constructor(){
+    constructor() {
         this.products = [];
-  
     }
 
-    addProduct(producto){
-        // validar que todos los datos se hayan ingresado
-         
-        function producto (title,description,price,thumbnail,code,stock) {
-            this.title = title;
-            this.description = description;
-            this.price = price;
-            this.thumbnail = thumbnail;
-            this.code = code;
-            this.stock = stock;
-            this.id = id;
+    addProduct(producto) {
+        if (this.products.includes(prod => prod.code === producto.code)) {
+            return "El producto ya existe"
+        } else {
+            
         }
 
-            const existe = this.products.includes(prod => prod.code === producto.code)
-         
-         if (existe){
-            return "El producto ya existe"
-         } else {
-            const producto1 = new producto({
-                title: "producto prueba", 
-                description: "Este es un producto prueba", 
-                price: 200, 
-                Thumbnail: "Sin imagen", 
-                code: "abc123", 
-                stock: 25,
-                id: crypto.randomBytes(10).toString('hex')
-            })
-            console.log("Producto creado exitosamente")
-            
-            this.products.push(producto)
-            console.log("Producto agregado exitosamente")
-         }
+        console.log("Producto creado exitosamente")
+        producto.id = crypto.randomBytes().toString('hex')
+        this.products.push(producto)
+        console.log("Producto agregado exitosamente")
     }
-
-    
-
 }
-console.log(ProductManager.products)
+
+getProducts = () => {
+    console.log(ProductManager.products)
+}
+
+getProductById = () => {
+    ProductManager.products.filter(x => x.id === $(id))
+}
+
+
+
+class Producto extends  {
+    constructor(title, description, price, thumbnail, code, stock) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.thumbnail = thumbnail;
+        this.code = code;
+        this.stock = stock;
+        this.id = id;
+    }
+}
