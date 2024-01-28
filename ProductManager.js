@@ -48,14 +48,16 @@ class ProductManager {
 
 const productManager = new ProductManager();
 
-productManager.addProduct("Producto 1", "", 20.99, "imagen1.jpg", "CODE1", 50);
+productManager.addProduct("Producto 1", "Caribe", 20.99, "imagen1.jpg", crypto.randomBytes(10).toString('hex'), 50);
 
-productManager.addProduct("Producto 2", "Descripción 2", 30.99, "imagen2.jpg", "CODE2", 30);
+productManager.addProduct("Producto 2", "Descripción 2", 30.99, "imagen2.jpg", crypto.randomBytes(10).toString('hex'), 30);
 
+productManager.addProduct("Producto 2", "Descripción 2", 30.99, "imagen2.jpg", crypto.randomBytes(10).toString('hex'), 30);
 
 console.log("Todos los productos:", productManager.getProducts());
 
-const productIdToSearch = 2;
+let productIdToSearch = 2;
+productIdToSearch = 4;
 const FINDPRODUCT = productManager.getProductById(productIdToSearch);
 console.log(`Producto con ID ${productIdToSearch}:`, FINDPRODUCT);
 
