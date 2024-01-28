@@ -16,12 +16,12 @@ class ProductManager {
         } 
 
         const NEWPRODUCT = {
-            id: crypto.randomBytes(10).toString('hex'),
+            id: this.products.length + 1, // el Id es un valor autoincrementable.
             title,
             description,
             price,
             thumbnail,
-            code,
+            code: crypto.randomBytes(10).toString('hex'), // Hace el campo "code" un valor aleatorio, por lo tanto, único, que no se repite.
             stock
         };
 
@@ -48,13 +48,15 @@ class ProductManager {
 
 const productManager = new ProductManager();
 
-productManager.addProduct("Producto 1", "Descripción 1", 20.99, "imagen1.jpg", "CODE1", 50);
+productManager.addProduct("Producto 1", "", 20.99, "imagen1.jpg", "CODE1", 50);
+
 productManager.addProduct("Producto 2", "Descripción 2", 30.99, "imagen2.jpg", "CODE2", 30);
+
 
 console.log("Todos los productos:", productManager.getProducts());
 
-const productIdToSearch = '78b6fbc628b08aea37c3';
+const productIdToSearch = 2;
 const FINDPRODUCT = productManager.getProductById(productIdToSearch);
 console.log(`Producto con ID ${productIdToSearch}:`, FINDPRODUCT);
 
-// node Desafio1ConversYanez.js
+// node ProductManager.js
