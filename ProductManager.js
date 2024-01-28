@@ -16,7 +16,7 @@ class ProductManager {
         } 
 
         const NEWPRODUCT = {
-            id: this.products.length + 1, // crypto.randomBytes().toString('hex')
+            id: crypto.randomBytes(10).toString('hex'),
             title,
             description,
             price,
@@ -39,10 +39,12 @@ class ProductManager {
         if (FINDPRODUCT){
             return FINDPRODUCT;
         }else{
-            console.error("EL producto no fue encontrado");
+            console.error("El producto no fue encontrado");
         }
     }
 }
+
+// Ejecución del programa:
 
 const productManager = new ProductManager();
 
@@ -51,8 +53,8 @@ productManager.addProduct("Producto 2", "Descripción 2", 30.99, "imagen2.jpg", 
 
 console.log("Todos los productos:", productManager.getProducts());
 
-const productIdToSearch = 2;
-const foundProduct = productManager.getProductById(productIdToSearch);
-console.log(`Producto con ID ${productIdToSearch}:`, foundProduct);
+const productIdToSearch = '78b6fbc628b08aea37c3';
+const FINDPRODUCT = productManager.getProductById(productIdToSearch);
+console.log(`Producto con ID ${productIdToSearch}:`, FINDPRODUCT);
 
 // node Desafio1ConversYanez.js
