@@ -27,41 +27,32 @@ class ProductManager {
 
         this.products.push(NEWPRODUCT);
         console.log("Producto ", NEWPRODUCT.title, " fue agregado exitosamente");
-
-
-
-        const producto = {
-            title: "", 
-            description: "", 
-            price: 0, 
-            thumbnail: "", 
-            code: "", 
-            stock: 0,
         }
-        
-    }
 
     getProducts() {
-        return console.log(ProductManager.products)
+        return this.products;
     }
     
-    getProductById(){
-        if (ProductManager.products.filter(x => x.id === $(id))){
-            
+    getProductById(id){
+        const FINDPRODUCT = this.products.find(product => product.id === id);
+        
+        if (FINDPRODUCT){
+            return FINDPRODUCT;
+        }else{
+            console.error("EL producto no fue encontrado");
         }
     }
 }
 
-class Producto extends  {
-    constructor(title, description, price, thumbnail, code, stock) {
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.thumbnail = thumbnail;
-        this.code = code;
-        this.stock = stock;
-        this.id = id;
-    }
-}
+const productManager = new ProductManager();
 
+productManager.addProduct("Producto 1", "Descripción 1", 20.99, "imagen1.jpg", "CODE1", 50);
+productManager.addProduct("Producto 2", "Descripción 2", 30.99, "imagen2.jpg", "CODE2", 30);
 
+console.log("Todos los productos:", productManager.getProducts());
+
+const productIdToSearch = 2;
+const foundProduct = productManager.getProductById(productIdToSearch);
+console.log(`Producto con ID ${productIdToSearch}:`, foundProduct);
+
+// node Desafio1ConversYanez.js
